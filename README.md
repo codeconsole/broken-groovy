@@ -9,11 +9,12 @@ git checkout fatjar
 2) Build the Exploded War
 
 ```
-gradle clean gaeExplodeWar
+./gradlew clean gaeExplodeWar
 ```
 
-3) Observe that Groovy was bundled into the fat jar!
+3) Observe the Groovy-all jar and that Groovy was also bundled into the fat jar!
 
 ```
+ls build/exploded-war/WEB-INF/lib
 unzip -t build/exploded-war/WEB-INF/lib/broken-groovy.jar
 ```
