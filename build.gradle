@@ -15,14 +15,22 @@ buildscript {
     }
 }
 
+gae {
+    optimizeWar = true
+    downloadSdk = true
+}
+
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 dependencies {
     def gaeVersion = '1.7.2'
-    groovy 'org.codehaus.groovy:groovy-all:2.0.5'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.5', {
+        ext {
+          fatJarExclude = true
+        }
+    }
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
             "com.google.appengine:appengine-api-labs:$gaeVersion"
     compile 'org.gaelyk:gaelyk:1.2'

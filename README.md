@@ -1,23 +1,19 @@
-Here is a simple 4 step process to replicate the issue:
+Here is a simple 3 step process to replicate the issue:
 
 1) Checkout the Example app.
 
 ```
-git clone https://github.com/codeconsole/broken-groovy
-cd broken-groovy
+git clone https://github.com/codeconsole/broken-groovy; cd broken-groovy
+git checkout fatjar
 ```
-2) Modify <application>gaelykapp</application> to an application name you can deploy to.
+2) Build the Exploded War
 
 ```
-vi ./src/main/webapp/WEB-INF/appengine-web.xml
+gradle clean gaeExplodeWar
 ```
-3) Upload the Application
+
+3) Observe that Groovy was bundled into the fat jar!
 
 ```
-gradle gaeUpload
+unzip -t build/exploded-war/WEB-INF/lib/broken-groovy.jar
 ```
-4) View the following url where @application is replaced with your application name
-
-http://@application.appspot.com
-
-e.g. http://gaelykapp.appspot.com
