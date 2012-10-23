@@ -13,8 +13,10 @@ git checkout fatjar
 ```
 
 3) Observe the Groovy-all jar and that Groovy was also bundled into the fat jar!
+Update: Observe other excluded jars are not excluded from fat jar as well
 
 ```
 ls build/exploded-war/WEB-INF/lib
 unzip -c build/exploded-war/WEB-INF/lib/broken-groovy.jar META-INF/services/org.codehaus.groovy.source.Extensions|grep groovy
+unzip -t build/exploded-war/WEB-INF/lib/broken-groovy.jar|grep com/google/appengine/tools/appstats/DatastoreRpcCostCalculator.class
 ```
