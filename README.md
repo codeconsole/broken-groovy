@@ -14,7 +14,7 @@ vi ./src/main/webapp/WEB-INF/appengine-web.xml
 3) Upload the Application
 
 ```
-gradle gaeUpload
+./gradlew gaeUpload
 ```
 4) View the following url where @application is replaced with your application name
 
