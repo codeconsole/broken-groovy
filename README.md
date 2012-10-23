@@ -16,5 +16,5 @@ git checkout fatjar
 
 ```
 ls build/exploded-war/WEB-INF/lib
-unzip -t build/exploded-war/WEB-INF/lib/broken-groovy.jar
+unzip -c build/exploded-war/WEB-INF/lib/broken-groovy.jar META-INF/services/org.codehaus.groovy.source.Extensions|grep groovy
 ```
