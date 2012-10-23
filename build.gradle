@@ -36,3 +36,7 @@ dependencies {
     compile 'org.gaelyk:gaelyk:1.2'
     gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.2'
+}
