@@ -1,4 +1,4 @@
-Here is a simple 3 step process to replicate the issue:
+Here is a simple 2 step process to replicate the issue:
 
 1) Checkout the Example app.
 
@@ -12,11 +12,9 @@ git checkout fatjar
 ./gradlew clean gaeExplodeWar
 ```
 
-3) Observe the Groovy-all jar and that Groovy was also bundled into the fat jar!
-Update: Observe other excluded jars are not excluded from fat jar as well
-
+Notice the error message:
 ```
-ls build/exploded-war/WEB-INF/lib
-unzip -c build/exploded-war/WEB-INF/lib/broken-groovy.jar META-INF/services/org.codehaus.groovy.source.Extensions|grep groovy
-unzip -t build/exploded-war/WEB-INF/lib/broken-groovy.jar|grep com/google/appengine/tools/appstats/DatastoreRpcCostCalculator.class
+* What went wrong:
+Execution failed for task ':fatJarPrepareFiles'.
+> String index out of range: 24
 ```

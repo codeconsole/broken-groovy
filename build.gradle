@@ -11,7 +11,10 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6', {
+            exclude module: "gradle-fatjar-plugin"
+        }
+        classpath files('lib/gradle-fatjar-plugin-0.1.3.jar')
     }
 }
 
@@ -26,18 +29,11 @@ repositories {
 
 dependencies {
     def gaeVersion = '1.7.2'
-    groovy 'org.codehaus.groovy:groovy-all:2.0.5', {
-        ext {
-          fatJarExclude = true
-        }
-    }
+    groovy 'org.codehaus.groovy:groovy-all:2.0.5'
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion"
-    compile "com.google.appengine:appengine-api-labs:$gaeVersion", {
-        ext {
-          fatJarExclude = true
-        }
-    }
-    compile 'org.gaelyk:gaelyk:1.2'
+    compile "com.google.appengine:appengine-api-labs:$gaeVersion"
+//    compile 'org.gaelyk:gaelyk:1.2'
+    compile files('lib/gaelyk-2.0-SNAPSHOT.jar')
     gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
 }
 
