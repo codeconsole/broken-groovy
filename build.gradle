@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'gae'
+apply plugin: 'gaelyk'
 
 def compatibilityVersion = 1.6
 sourceCompatibility = compatibilityVersion
@@ -12,8 +13,19 @@ buildscript {
 
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+        classpath files('lib/gradle-gaelyk-plugin-master-0.4-SNAPSHOT.jar')        
     }
 }
+
+war {
+    exclude('WEB-INF/gtpl/', 'WEB-INF/groovy/')
+}
+
+gaelyk {
+    optimizeWar = false
+    rad = false
+}
+
 
 repositories {
     mavenCentral()
@@ -21,10 +33,16 @@ repositories {
 
 dependencies {
     def gaeVersion = '1.7.2'
-    groovy 'org.codehaus.groovy:groovy-all:2.0.5'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.1', {
+        force = true
+    }
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
             "com.google.appengine:appengine-api-labs:$gaeVersion"
-    compile 'org.gaelyk:gaelyk:1.2'
+    
+    // if you substitute this for the gaelyk jar, precompiling works again. 
+    //compile 'org.gaelyk:gaelyk:1.2'
+    compile files('lib/gaelyk-2.0-SNAPSHOT.jar')     
+    
     gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
 }
 
