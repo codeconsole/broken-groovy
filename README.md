@@ -4,7 +4,7 @@ Here is a simple 2 step process to replicate the issue:
 
 ```
 git clone https://github.com/codeconsole/broken-groovy; cd broken-groovy
-git checkout fatjar
+git checkout fatjar2
 ```
 2) Build the Exploded War
 
@@ -12,9 +12,9 @@ git checkout fatjar
 ./gradlew clean gaeExplodeWar
 ```
 
-Notice the error message:
+Notice that the gtpl and groovy folders still exist even though they have been excluded:
 ```
-* What went wrong:
-Execution failed for task ':fatJarPrepareFiles'.
-> String index out of range: 24
+ls build/exploded-war/WEB-INF
 ```
+
+Note: if you set optimizeWar = false, the folders are correctly excluded.

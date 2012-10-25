@@ -1,4 +1,0 @@
-moduleName=pixoto-extension-module
-moduleVersion=2.0-SNAPSHOT
-extensionClasses=com.pixoto.extensions.TimingExtension,com.pixoto.extensions.DatastoreExtension
-staticExtensionClasses=

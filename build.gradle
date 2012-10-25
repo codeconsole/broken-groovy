@@ -23,6 +23,11 @@ gae {
     downloadSdk = true
 }
 
+war {
+    exclude('WEB-INF/gtpl/', 'WEB-INF/groovy/')
+}
+
+
 repositories {
     mavenCentral()
 }
