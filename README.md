@@ -21,13 +21,9 @@ perl -p -i -e 's/gaelykapp/YOURAPPNAMEHERE/g' ./src/main/webapp/WEB-INF/appengin
 
 http://@application.appspot.com
 
-e.g. http://gaelykapp.appspot.com
+e.g. http://3.gaelykapp.appspot.com/
 
-Note:
-if you update build.gradle to point to the pre-groovy2 version of gaelyk, everything works.
-So it appears precompiling is only broken on the groovy2 branch of gaelyk.
+Note that a FileNotFoundException is thrown on the gtpl page, but it is not caught. 
+You will also notice the gtpl page exists:
+build/classes/main/web_inf/gtpl/\$gtpl\$hello.class
 
-To demonstrate this, substitute
-compile 'org.gaelyk:gaelyk:1.2'
-for 
-compile files('lib/gaelyk-2.0-SNAPSHOT.jar')  
