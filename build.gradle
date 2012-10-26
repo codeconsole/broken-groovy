@@ -12,12 +12,19 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+        classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6', {
+            exclude module: "gradle-fatjar-plugin"
+        }
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.2-rc1'
         classpath files('lib/gradle-gaelyk-plugin-master-0.4-SNAPSHOT.jar')        
     }
 }
 
 war {
+    exclude('WEB-INF/gtpl/', 'WEB-INF/groovy/')
+}
+
+slimWar {
     exclude('WEB-INF/gtpl/', 'WEB-INF/groovy/')
 }
 
@@ -32,11 +39,11 @@ repositories {
 }
 
 dependencies {
-    def gaeVersion = '1.7.2'
+    def gaeVersion = '1.7.3'
     groovy 'org.codehaus.groovy:groovy-all:2.0.1', {
         force = true
     }
-    compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
+    compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion", 
             "com.google.appengine:appengine-api-labs:$gaeVersion"
     
     // if you substitute this for the gaelyk jar, precompiling works again. 
